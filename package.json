@@ -22,12 +22,21 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-turbo": "^1.9.3",
     "husky": "^8.0.3",
+    "lint-staged": "^13.2.1",
     "prettier": "^2.8.7",
     "turbo": "^1.9.3"
   },
   "eslintIgnore": [
     "node_modules/*"
   ],
+  "lint-staged": {
+    "apps/*.{ts,tsx}": [
+      "eslint --fix --ext .ts,.tsx"
+    ],
+    "packages/*.{ts,tsx}": [
+      "eslint --fix --ext .ts,.tsx"
+    ]
+  },
   "dependencies": {
     "typescript": "^5.0.4"
   }
