@@ -1,4 +1,8 @@
 {
   "name": "@woovi/presets",
-  "dependencies": {}
+  "dependencies": {},
+  "files": [
+    "js",
+    "json"
+  ]
 }
