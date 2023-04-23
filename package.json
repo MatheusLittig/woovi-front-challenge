@@ -12,7 +12,12 @@
   "devDependencies": {
     "@commitlint/cli": "^17.6.1",
     "@commitlint/config-conventional": "^17.6.1",
+    "@types/node": "^18.15.13",
+    "@types/react": "^18.0.38",
     "husky": "^8.0.3",
     "turbo": "^1.9.3"
+  },
+  "dependencies": {
+    "typescript": "^5.0.4"
   }
 }
