@@ -1,13 +1,13 @@
 import { VariantProps, cva } from "class-variance-authority"
 
 const className = cva(
-  "flex items-center outline justify-center gap-2 transition-all rounded-lg",
+  "flex items-center justify-center gap-2 transition-all rounded-lg",
   {
     variants: {
       variant: {
         primary: [
           "bg-blue-company-950 text-white",
-          "active:outline-2 active:outline-blue-company-700",
+          "focus:outline-none focus:ring-2 focus:ring-blue-company-700",
         ],
       },
       size: {
