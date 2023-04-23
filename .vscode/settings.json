@@ -16,5 +16,6 @@
   "workbench.iconTheme": "material-icon-theme",
   "material-icon-theme.folders.associations": {
     "presets": "less",
+    "ui": "mjml",
   }
 }

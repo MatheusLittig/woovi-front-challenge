@@ -1,0 +1,5 @@
+{
+  "extends": "@woovi/presets/json/react-library.json",
+  "include": ["."],
+  "exclude": ["node_modules"]
+}
