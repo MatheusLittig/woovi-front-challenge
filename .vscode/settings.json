@@ -17,5 +17,6 @@
   "material-icon-theme.folders.associations": {
     "presets": "less",
     "ui": "mjml",
+    "web": "client",
   }
 }
