@@ -85,6 +85,9 @@ importers:
       class-variance-authority:
         specifier: ^0.5.2
         version: 0.5.2(typescript@5.0.4)
+      iconoir-react:
+        specifier: ^6.6.0
+        version: 6.6.0(react@18.2.0)
       react:
         specifier: ^18.2.0
         version: 18.2.0
@@ -1588,6 +1591,14 @@ packages:
     engines: {node: '>=14'}
     hasBin: true
     dev: true
+
+  /iconoir-react@6.6.0(react@18.2.0):
+    resolution: {integrity: sha512-7ueB0jQlSZFjEa4qUCaGbfWLRjGBtOc0E+RYHEb3Ek3zDwQuNh4VLtV9kwGoiATRfBYVv8bgCmXI0nr52TRXsw==}
+    peerDependencies:
+      react: ^16.8.6 || ^17 || ^18
+    dependencies:
+      react: 18.2.0
+    dev: false
 
   /ignore@5.2.4:
     resolution: {integrity: sha512-MAb38BcSbH0eHNBxn7ql2NH/kX33OkB3lZ1BNdh7ENeRChHTYsTvWrMubiIAMNS2llXEEgZ1MUOBtXChP3kaFQ==}

@@ -1,3 +1,12 @@
-export default function Home() {
-  return <h1>hello next</h1>
+import { Button, Icon } from "@woovi/ui"
+
+export default function Page() {
+  return (
+    <main className="w-full">
+      <Button full>
+        <p>{"Pagar agora"}</p>
+        <Icon.CreditCard />
+      </Button>
+    </main>
+  )
 }
