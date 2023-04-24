@@ -1,4 +1,4 @@
-import { Button, Icon, Input } from "@woovi/ui"
+import { Badge, Button, Icon, Input } from "@woovi/ui"
 
 export default function Page() {
   return (
@@ -9,6 +9,10 @@ export default function Page() {
       </Button>
 
       <Input type="text" placeholder="E-mail" />
+
+      <Badge>
+        🤑 <strong>R$ 300,00</strong> de volta no seu Pix na hora
+      </Badge>
     </main>
   )
 }
