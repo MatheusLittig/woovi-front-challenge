@@ -1,7 +1,7 @@
 import { VariantProps, cva } from "class-variance-authority"
 
 const className = cva(
-  "flex text-gray-50 items-center gap-2 min-w-[40px] w-[calc(100%_-_24px)] rounded-l min-h-[2rem] px-2",
+  "flex text-gray-50 items-center gap-2 min-w-[40px] w-[calc(100%_-_23px)] rounded-l min-h-[2rem] px-2",
   {
     variants: {
       variant: {
