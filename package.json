@@ -28,7 +28,8 @@
     "husky": "^8.0.3",
     "lint-staged": "^13.2.1",
     "prettier": "^2.8.7",
-    "turbo": "^1.9.3"
+    "turbo": "^1.9.3",
+    "zod": "^3.21.4"
   },
   "eslintIgnore": [
     "node_modules/*"

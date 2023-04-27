@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@woovi/ui": "workspace:*",
+    "@woovi/resources": "workspace:*",
     "autoprefixer": "^10.4.14",
     "next": "^13.3.1",
     "postcss": "^8.4.23",

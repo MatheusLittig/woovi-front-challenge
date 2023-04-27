@@ -15,10 +15,9 @@ module.exports = {
     ecmaVersion: "latest",
     sourceType: "module",
   },
-  plugins: ["@typescript-eslint", "prettier", "turbo"],
+  plugins: ["@typescript-eslint", "prettier"],
   rules: {
     indent: ["error", 2],
-    "turbo/no-undeclared-env-vars": "error",
     "linebreak-style": ["error", "unix"],
     quotes: ["error", "double"],
     semi: ["error", "never"],

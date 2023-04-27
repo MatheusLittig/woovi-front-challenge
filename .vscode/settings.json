@@ -18,5 +18,8 @@
     "presets": "less",
     "ui": "mjml",
     "web": "client",
+    "stores": "context",
+    "adapters": "cluster",
+    "react": "React-components"
   }
 }
