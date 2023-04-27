@@ -1,4 +1,5 @@
 import { Badge, Button, Checkbox, Icon, Input, Row } from "@woovi/ui"
+import Link from "next/link"
 
 export default function Page() {
   return (
@@ -35,6 +36,8 @@ export default function Page() {
           </Badge>
         </Row.Content>
       </Row>
+
+      <Link href="/payments">go to payments</Link>
     </main>
   )
 }

@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  transpilePackages: ["@woovi/ui"],
+  transpilePackages: ["@woovi/ui", "@woovi/resources"],
   experimental: {
     appDir: true,
   },
