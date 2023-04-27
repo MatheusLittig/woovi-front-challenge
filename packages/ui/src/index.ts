@@ -7,6 +7,7 @@ export { default as Checkbox } from "./components/common/Checkbox"
 
 /** modules */
 export { default as Display } from "./components/modules/Display"
+export { default as List } from "./components/modules/List"
 
 /** templates */
 export { default as Row } from "./components/templates/Row"

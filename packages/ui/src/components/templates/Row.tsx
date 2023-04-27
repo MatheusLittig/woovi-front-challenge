@@ -39,7 +39,7 @@ const RowContent = ({
   <main
     className={cx(
       className,
-      "w-full h-full p-4 flex flex-col items-start justify-center"
+      "w-full h-full pt-4 px-3 pb-3 flex flex-col items-start justify-center"
     )}
     {...props}
   />

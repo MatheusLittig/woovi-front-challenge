@@ -1,43 +1,68 @@
-import { Badge, Button, Checkbox, Icon, Input, Row } from "@woovi/ui"
+import { Payment } from "@woovi/resources"
+import { Badge, Button, Checkbox, List, Row } from "@woovi/ui"
+import PaymentOptionRow from "../components/PaymentOptionRow"
 import Link from "next/link"
 
-export default function Page() {
+export default async function Page() {
+  const payment = (await fetch("http://localhost:3000/api/payment").then(res =>
+    res.json()
+  )) as Payment
+
   return (
-    <main className="flex flex-col w-full gap-4">
-      <Button full>
-        <p>{"Pagar agora"}</p>
-        <Icon.CreditCard />
-      </Button>
+    <main className="flex flex-col items-center justify-center w-full relative">
+      <h1 className="font-bold text-2xl text-center">
+        João, como você gostaria de pagar?
+      </h1>
 
-      <Input type="text" placeholder="E-mail" />
+      <section className="flex flex-col w-full h-full mt-8 mb-20 gap-8">
+        <Row className="border-2 border-dark-company-100 rounded-lg">
+          <Row.Indicator className="bg-dark-company-100 px-4 py-1 text-lg font-semibold flex items-center rounded-full">
+            Pix
+          </Row.Indicator>
+          <Row.Content>
+            <section className="flex items-center justify-between w-full">
+              <div>
+                <h1 className="text-2xl">
+                  <strong>1x </strong>
+                  {Intl.NumberFormat("pt-BR", {
+                    currency: "BRL",
+                    style: "currency",
+                  }).format(payment.total)}
+                </h1>
+                <h3 className="text-green-company-500">
+                  Ganhe <strong>3% de Cashback</strong>
+                </h3>
+              </div>
 
-      <Badge>
-        🤑 <strong>R$ 300,00</strong> de volta no seu Pix na hora
-      </Badge>
+              <Checkbox />
+            </section>
 
-      <Row className="border-2 border-dark-company-200">
-        <Row.Indicator className="bg-dark-company-100 px-4 py-1 text-lg font-semibold flex items-center rounded-full">
-          Pix parcelado
-        </Row.Indicator>
-        <Row.Content>
-          <section className="flex items-center justify-between w-full">
-            <div>
-              <h1 className="text-2xl">
-                <strong>2x</strong> R$ 15.300,00
-              </h1>
-              <h3 className="text-dark-company-400">Total: R$ 30.620,00</h3>
-            </div>
+            <Badge>
+              🤑 <strong>R$ 300,00</strong> de volta no seu Pix
+            </Badge>
+          </Row.Content>
+        </Row>
 
-            <Checkbox />
-          </section>
+        <ul className="flex flex-col">
+          <List
+            component={PaymentOptionRow}
+            data={payment.options}
+            sanitize={(props, index) => {
+              if ([0, payment.options.length - 1].includes(index))
+                return { ...props, position: index === 0 ? "first" : "last" }
+              else return { ...props }
+            }}
+          />
+        </ul>
+      </section>
 
-          <Badge>
-            <strong>-3% de juros:</strong> Melhor opção{" "}
-          </Badge>
-        </Row.Content>
-      </Row>
-
-      <Link href="/payments">go to payments</Link>
+      <section className="flex flex-col items-center justify-center border-t-2 border-dark-company-100 fixed bottom-0 h-24 w-full bg-white">
+        <Link href={`/checkout/${payment.id}`}>
+          <Button disabled size="lg" variant="primary">
+            Próxima etapa
+          </Button>
+        </Link>
+      </section>
     </main>
   )
 }

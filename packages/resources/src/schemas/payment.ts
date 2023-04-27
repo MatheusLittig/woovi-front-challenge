@@ -3,6 +3,7 @@ import { z } from "zod"
 const PaymentSchema = z.object({
   id: z.string(),
   user_id: z.string(),
+  total: z.number(),
   term: z.string(),
   options: z.array(
     z.object({
