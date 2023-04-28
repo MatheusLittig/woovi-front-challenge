@@ -1,4 +1,4 @@
-import { Payment } from "@woovi/resources"
+import { Payment } from "@woovi/stores"
 import { Badge, Checkbox, Display, Row } from "@woovi/ui"
 import { ComponentProps } from "react"
 
@@ -6,16 +6,16 @@ const PaymentOptionRow = ({
   checked = false,
   position = undefined,
   ...props
-}: Payment["options"][0] & { checked: boolean } & Pick<
+}: Payment.Model["options"][0] & { checked: boolean } & Pick<
     ComponentProps<typeof Row>,
-    "position"
+    "position" | "onClick"
   >) => {
   return (
     <Row
       position={position}
-      className={`border-x-2 ${
-        position === "last" ? "border-b-2 border-t-2" : "border-t-2"
-      } border-dark-company-100`}
+      selected={checked}
+      onClick={props.onClick}
+      className={"border-2 -mt-[1px] border-dark-company-100"}
     >
       <Display when={position === "first"}>
         <Row.Indicator className="bg-dark-company-100 px-4 py-1 text-lg font-semibold flex items-center rounded-full">
@@ -26,7 +26,7 @@ const PaymentOptionRow = ({
         <section className="flex items-center justify-between w-full">
           <div>
             <h1 className="text-2xl">
-              <strong>{props.amount}x</strong>
+              <strong>{props.amount}x</strong>{" "}
               {Intl.NumberFormat("pt-BR", {
                 currency: "BRL",
                 style: "currency",

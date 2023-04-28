@@ -1,9 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  transpilePackages: ["@woovi/ui", "@woovi/resources"],
-  typescript: {
-    ignoreBuildErrors: true,
-  },
+  transpilePackages: ["@woovi/ui", "@woovi/stores"],
   experimental: {
     appDir: true,
   },

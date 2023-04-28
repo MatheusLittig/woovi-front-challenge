@@ -9,8 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@woovi/ui": "workspace:*",
-    "@woovi/resources": "workspace:*",
+    "@woovi/ui": "*",
+    "@woovi/stores": "*",
     "autoprefixer": "^10.4.14",
     "next": "^13.3.1",
     "postcss": "^8.4.23",
