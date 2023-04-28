@@ -1,6 +1,6 @@
 import { z } from "zod"
 
-const PaymentSchema = z.object({
+const ModelSchema = z.object({
   id: z.string(),
   user_id: z.string(),
   total: z.number(),
@@ -15,7 +15,7 @@ const PaymentSchema = z.object({
   ),
 })
 
-export type Payment = z.infer<typeof PaymentSchema>
+export type Model = z.infer<typeof ModelSchema>
 
 const CreditCardSchema = z.object({
   name: z
@@ -40,4 +40,6 @@ const CreditCardSchema = z.object({
   }),
 })
 
-export { CreditCardSchema, PaymentSchema }
+export type CreditCard = z.infer<typeof CreditCardSchema>
+
+export { CreditCardSchema, ModelSchema }

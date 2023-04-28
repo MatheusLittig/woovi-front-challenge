@@ -1,5 +1,6 @@
 {
   "name": "@woovi/presets",
+  "version": "1.0.0",
   "dependencies": {},
   "files": [
     "js",

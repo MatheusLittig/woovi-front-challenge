@@ -23,6 +23,7 @@
     "web": "client",
     "stores": "context",
     "adapters": "cluster",
-    "react": "React-components"
+    "react": "React-components",
+    "schemas": "interface"
   }
 }

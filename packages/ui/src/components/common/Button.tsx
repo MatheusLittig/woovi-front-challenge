@@ -1,7 +1,7 @@
 import { VariantProps, cva } from "class-variance-authority"
 
 const className = cva(
-  "flex items-center justify-center gap-2 transition-all rounded-lg disabled:bg-dark-company-300",
+  "flex items-center justify-center gap-2 font-semibold transition-all rounded-lg disabled:bg-dark-company-300",
   {
     variants: {
       variant: {
@@ -15,8 +15,8 @@ const className = cva(
         ],
       },
       size: {
-        md: ["h-9 px-2 py-1"],
-        lg: ["h-12 px-3 py-1"],
+        md: ["h-9 px-3 py-1"],
+        lg: ["h-12 px-4 py-1"],
       },
       full: {
         true: ["w-full"],
@@ -31,7 +31,7 @@ const className = cva(
 )
 
 type ButtonProps = React.HTMLAttributes<HTMLButtonElement> &
-  VariantProps<typeof className> & { disabled: boolean }
+  VariantProps<typeof className> & { disabled?: boolean }
 
 const Button = ({ variant, size, full, ...props }: ButtonProps) => (
   <button className={className({ variant, size, full })} {...props} />

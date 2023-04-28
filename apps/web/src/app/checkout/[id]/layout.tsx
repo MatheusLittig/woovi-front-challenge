@@ -8,9 +8,9 @@ export default function PixLayout(props: {
   return (
     <StoreProvider>
       {props.children}
-      <span className="text-center">
+      <span className="text-center text-dark-company-200">
         Identificador <br />
-        <strong>{props.params.id}</strong>
+        <strong className="text-dark-company-400">{props.params.id}</strong>
       </span>
     </StoreProvider>
   )

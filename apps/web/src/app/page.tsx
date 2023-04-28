@@ -17,7 +17,7 @@ export default async function Home() {
 
       <StoreProvider>
         <section className="flex flex-col w-full h-full mt-8 mb-20 gap-8">
-          <PaymentList data={[payment]} />
+          <PaymentList data={payment} />
         </section>
         <section className="flex flex-col items-center justify-center border-t-2 border-dark-company-100 fixed bottom-0 h-24 w-full bg-white">
           <AdvanceButton id={store.getState().payment.payments[0].id} />

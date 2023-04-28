@@ -5,14 +5,17 @@ import { Badge, Button, Checkbox, List, Row } from "@woovi/ui"
 import PaymentOptionRow from "../components/PaymentOptionRow"
 import { Fragment } from "react"
 import Link from "next/link"
+import { Payment } from "@res/index"
 
-const PaymentList = (props: { data: any }) => {
+const PaymentList = (props: { data: Payment.Model }) => {
   const { state, ...actions } = useStore("payment", store => ({
-    setPayments: () => store.dispatch("setPayments", props.data),
+    setInstallments: (payload: Payment.Model["options"]) =>
+      store.dispatch("setInstaments", payload),
     selectOption: (amount: number) => {
       if (store.state.selected === amount) {
         store.dispatch("setSelected", null)
         store.dispatch("removeStep", undefined)
+        store.dispatch("setInstaments", [])
         return
       }
 
@@ -31,7 +34,7 @@ const PaymentList = (props: { data: any }) => {
     },
   }))
 
-  const payment = props.data[0]
+  const payment = props.data
 
   return (
     <Fragment>
@@ -72,20 +75,20 @@ const PaymentList = (props: { data: any }) => {
           component={PaymentOptionRow}
           data={payment.options}
           sanitize={(props, index) => {
+            const base = {
+              ...props,
+              checked: state.selected === props.amount,
+              onClick: () => {
+                actions.selectOption(props.amount)
+                actions.setInstallments([{ ...props }])
+              },
+            }
+
             if ([0, payment.options.length - 1].includes(index)) {
               const position = index === 0 ? "first" : "last"
-              return {
-                ...props,
-                position,
-                checked: state.selected === props.amount,
-                onClick: () => actions.selectOption(props.amount),
-              }
+              return { ...base, position }
             } else {
-              return {
-                ...props,
-                checked: state.selected === props.amount,
-                onClick: () => actions.selectOption(props.amount),
-              }
+              return { ...base }
             }
           }}
         />

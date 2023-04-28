@@ -1,0 +1,13 @@
+{
+  "name": "@woovi/stores",
+  "version": "1.0.0",
+  "main": "./src/index.ts",
+  "dependencies": {
+    "@reduxjs/toolkit": "^1.9.5",
+    "next-redux-wrapper": "^8.1.0",
+    "react-redux": "^8.0.5"
+  },
+  "files": [
+    "./src/adapters/react"
+  ]
+}
