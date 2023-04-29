@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "src/index.ts",
   "scripts": {
-    "preview": "pnpm run storybook",
+    "preview": "yarn run storybook",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },

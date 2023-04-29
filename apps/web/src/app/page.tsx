@@ -5,7 +5,7 @@ import { StoreProvider } from "@woovi/stores/react/provider"
 const url =
   process.env.NODE_ENV === "development"
     ? "http://localhost:3000/"
-    : process.env.VERCEL_URL
+    : `https://${process.env.VERCEL_URL}/`
 
 export default async function Home() {
   const req = await fetch(url + "api/payment")
