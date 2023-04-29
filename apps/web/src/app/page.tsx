@@ -1,16 +1,8 @@
-import { Payment } from "@woovi/stores"
 import PaymentList, { AdvanceButton } from "../views/PaymentList"
 import { StoreProvider } from "@woovi/stores/react/provider"
+import payment from "../../db.json"
 
-const url =
-  process.env.NODE_ENV === "development"
-    ? "http://localhost:3000/"
-    : `https://${process.env.VERCEL_URL}/`
-
-export default async function Home() {
-  const req = await fetch(url + "api/payment")
-  const payment = (await req.json()) as Payment.Model
-
+export default function Home() {
   return (
     <main className="flex flex-col items-center justify-center w-full relative">
       <h1 className="font-bold text-2xl text-center">
