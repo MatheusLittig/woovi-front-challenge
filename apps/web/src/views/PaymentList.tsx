@@ -1,34 +1,41 @@
 "use client"
 
-import useStore from "@woovi/stores/src/adapters/react/use-store"
+import { useStore } from "@woovi/stores/react/use-store"
 import { Badge, Button, Checkbox, List, Row } from "@woovi/ui"
-import PaymentOptionRow from "../components/PaymentOptionRow"
 import { Fragment } from "react"
-import Link from "next/link"
+import { PaymentOptionRow } from "@/components"
 import { Payment } from "@res/index"
+import Link from "next/link"
 
 const PaymentList = (props: { data: Payment.Model }) => {
   const { state, ...actions } = useStore("payment", store => ({
-    setInstallments: (payload: Payment.Model["options"]) =>
-      store.dispatch("setInstaments", payload),
-    selectOption: (amount: number) => {
-      if (store.state.selected === amount) {
-        store.dispatch("setSelected", null)
-        store.dispatch("removeStep", undefined)
+    setTotal: (payload: number) => store.dispatch("updateTotal", payload),
+
+    selectOption: (id: number, data?: Payment.Model["options"][0]) => {
+      /** unselect an item in the list */
+      if (store.state.selected === id) {
         store.dispatch("setInstaments", [])
+        store.dispatch("setSelected", null)
+        store.dispatch("removeStep")
         return
       }
 
-      if (amount === 1) {
-        store.dispatch("removeStep", null)
+      if (id === 1) {
+        store.dispatch("removeStep")
+        store.dispatch("setInstaments", [
+          { amount: 1, total: props.data.total, value: props.data.total },
+        ])
+        store.dispatch("updateTotal", props.data.total)
       }
 
-      if (amount >= 2) {
+      if (id >= 2) {
+        store.dispatch("removeStep")
         store.dispatch("addStep", { id: 2, label: "2ª no cartão" })
-        store.dispatch("advanceStep", 2)
+        store.dispatch("setInstaments", [{ ...data }])
+        store.dispatch("updateTotal", data.total)
       }
 
-      store.dispatch("setSelected", amount)
+      store.dispatch("setSelected", id)
 
       return
     },
@@ -36,12 +43,14 @@ const PaymentList = (props: { data: Payment.Model }) => {
 
   const payment = props.data
 
+  console.log(state)
+
   return (
     <Fragment>
       <Row
         selected={state.selected === 1}
         onClick={() => actions.selectOption(1)}
-        className="border-2 border-dark-company-100 rounded-lg"
+        className="border-2 border-dark-company-100 rounded-lg cursor-pointer"
       >
         <Row.Indicator className="bg-dark-company-100 px-4 py-1 text-lg font-semibold flex items-center rounded-full">
           Pix
@@ -79,8 +88,7 @@ const PaymentList = (props: { data: Payment.Model }) => {
               ...props,
               checked: state.selected === props.amount,
               onClick: () => {
-                actions.selectOption(props.amount)
-                actions.setInstallments([{ ...props }])
+                actions.selectOption(props.amount, props)
               },
             }
 
@@ -99,15 +107,11 @@ const PaymentList = (props: { data: Payment.Model }) => {
 
 export const AdvanceButton = (props: { id: string }) => {
   const {
-    state: { selected, steps },
+    state: { selected },
   } = useStore("payment")
 
-  console.log(typeof selected)
-
   return (
-    <Link
-      href={`/checkout/${props.id}/${steps.current === 2 ? "credit" : "pix"}`}
-    >
+    <Link href={`/checkout/${props.id}/pix`}>
       <Button
         disabled={typeof selected !== "number"}
         size="lg"

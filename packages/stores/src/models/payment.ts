@@ -2,11 +2,11 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit"
 import { Payment } from ".."
 
 const initialState = {
-  payments: [] as Payment.Model[],
   selected: null as null | number,
   steps: { current: 1, list: [{ id: 1, label: "Entrada no PIX" }] },
-  installment: [] as Payment.Model["options"],
-  cet: 0.5,
+  installments: [] as Payment.Model["options"],
+  term: "",
+  cet: 0.05,
   total: 0,
 }
 
@@ -16,11 +16,19 @@ const model = createSlice({
   initialState,
 
   reducers: {
+    set: (state, action: PayloadAction<typeof initialState>) => {
+      state = { ...state, ...action.payload }
+    },
+
+    reset: state => {
+      state = initialState
+    },
+
     setInstaments: (
       state,
-      action: PayloadAction<(typeof initialState)["installment"]>
+      action: PayloadAction<(typeof initialState)["installments"]>
     ) => {
-      state.installment = action.payload
+      state.installments = action.payload
     },
 
     setSelected: (state, action: PayloadAction<number>) => {
@@ -51,11 +59,7 @@ const model = createSlice({
     },
 
     updateTotal: (state, action: PayloadAction<number>) => {
-      state.total = action.payload * state.cet + state.total
-    },
-
-    setPayments: (state, action: PayloadAction<Payment.Model[]>) => {
-      state.payments = action.payload
+      state.total = action.payload
     },
   },
 })

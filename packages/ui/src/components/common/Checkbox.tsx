@@ -1,6 +1,6 @@
 "use client"
 
-import { VariantProps, cva } from "class-variance-authority"
+import { VariantProps, cva, cx } from "class-variance-authority"
 import { useState } from "react"
 import Display from "../modules/Display"
 import Icon from "./Icon"
@@ -10,6 +10,7 @@ const className = cva(
   {
     variants: {
       size: {
+        sm: ["w-4 h-6"],
         md: ["w-6 h-6"],
       },
       checked: {
@@ -43,7 +44,13 @@ const Checkbox = ({
       {...props}
     >
       <Display when={_checked ?? selected}>
-        <Icon.Check className="w-4 h-4 stroke-2 text-gray-50" />
+        <Icon.Check
+          className={cx(
+            size === "sm"
+              ? "w-3 h-3 stroke-2 text-gray-50"
+              : "w-4 h-4 stroke-2 text-gray-50"
+          )}
+        />
       </Display>
     </span>
   )

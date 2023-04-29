@@ -21,7 +21,7 @@ const useStore = <T extends keyof RootState, G extends Record<string, any>>(
     state: RootState[T]
     dispatch: <F extends keyof (typeof actions)[T]>(
       action: F,
-      payload: Parameters<(typeof actions)[T][F]>[0]
+      payload?: Parameters<(typeof actions)[T][F]>[0]
     ) => typeof storeDispatch
   }) => G
 ) => {
@@ -46,4 +46,4 @@ const useStore = <T extends keyof RootState, G extends Record<string, any>>(
   }
 }
 
-export default useStore
+export { useStore }

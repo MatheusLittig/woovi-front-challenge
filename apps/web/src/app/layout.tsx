@@ -5,7 +5,6 @@ import Image from "next/image"
 import { Icon } from "@woovi/ui"
 
 const font = FontSans({
-  preload: true,
   subsets: ["latin"],
 })
 

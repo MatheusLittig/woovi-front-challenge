@@ -15,7 +15,8 @@
   /** material icons */
   "workbench.iconTheme": "material-icon-theme",
   "material-icon-theme.files.associations": {
-    "db.json": "database"
+    "db.json": "database",
+    "middleware.ts": "Roadmap"
   },
   "material-icon-theme.folders.associations": {
     "presets": "less",

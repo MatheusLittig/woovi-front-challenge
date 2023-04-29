@@ -1,6 +1,6 @@
 "use client"
 
-import useStore from "@woovi/stores/src/adapters/react/use-store"
+import { useStore } from "@woovi/stores/react/use-store"
 import { Button, Icon } from "@woovi/ui"
 
 export default function CheckoutPage() {
@@ -13,7 +13,7 @@ export default function CheckoutPage() {
         {Intl.NumberFormat("pt-BR", {
           currency: "BRL",
           style: "currency",
-        }).format(state.installment[0].value)}{" "}
+        }).format(state.total)}{" "}
         pelo Pix
       </h1>
       <Button>

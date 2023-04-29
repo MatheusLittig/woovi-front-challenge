@@ -26,5 +26,3 @@ export type RootState = ReturnType<typeof store.getState>
 export const actions = {
   payment: payment.actions,
 }
-
-/** adapters */

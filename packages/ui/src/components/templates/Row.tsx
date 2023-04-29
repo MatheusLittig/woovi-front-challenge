@@ -4,7 +4,7 @@ import { ComponentProps } from "react"
 const className = cva("min-w-fit w-full min-h-[96px] relative", {
   variants: {
     selected: {
-      true: ["border-green-company-500"],
+      true: ["border-green-company-500 bg-green-company-50 z-10"],
     },
     position: {
       first: ["rounded-t-lg"],

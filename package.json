@@ -4,7 +4,10 @@
   "description": "A challenge for frontend position at Woovi company",
   "main": "index.js",
   "private": true,
-  "workspaces": ["packages/*", "apps/*"],
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev --no-cache --continue",
@@ -26,6 +29,7 @@
     "eslint": "^8.39.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-turbo": "^1.9.3",
     "husky": "^8.0.3",
     "lint-staged": "^13.2.1",

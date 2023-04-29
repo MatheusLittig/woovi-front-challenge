@@ -15,7 +15,8 @@ const PaymentOptionRow = ({
       position={position}
       selected={checked}
       onClick={props.onClick}
-      className={"border-2 -mt-[1px] border-dark-company-100"}
+      style={{ marginTop: -2 }}
+      className={"border-2 border-dark-company-100 cursor-pointer"}
     >
       <Display when={position === "first"}>
         <Row.Indicator className="bg-dark-company-100 px-4 py-1 text-lg font-semibold flex items-center rounded-full">
@@ -45,7 +46,9 @@ const PaymentOptionRow = ({
         </section>
 
         <Display when={!!props.promo}>
-          <Badge>{props.promo}</Badge>
+          <Badge>
+            <p className="truncate">{props.promo}</p>
+          </Badge>
         </Display>
       </Row.Content>
     </Row>
