@@ -25,8 +25,6 @@ const CreditCardForm = () => {
   const { state, reset, onSelectInstallment } = useStore("payment", store => ({
     reset: () => store.dispatch("reset", undefined),
     onSelectInstallment: (id: number) => {
-      console.log(id)
-
       const selected = state.installments.options.find(i => i.amount === id)
 
       store.dispatch("setSelected", id)
@@ -56,8 +54,6 @@ const CreditCardForm = () => {
 
     return
   }
-
-  console.log(state)
 
   return (
     <form
