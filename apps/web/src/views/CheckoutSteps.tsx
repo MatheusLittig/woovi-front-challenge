@@ -1,21 +1,25 @@
+/* eslint-disable prettier/prettier */
 "use client"
 
 import { format } from "@woovi/helpers"
 import { useStore } from "@woovi/stores/react/use-store"
 import { Display, Icon, Steps } from "@woovi/ui"
+import { usePathname } from "next/navigation"
 import { useMemo } from "react"
 
 const CheckoutSteps = () => {
   const { state } = useStore("payment")
+  const path = usePathname()
 
   const listObj = useMemo(
     () =>
       state.steps.list.map(i => ({
         ...i,
         id: String(i.id),
-        checked: state.steps.current === i.id,
+        checked: i.id === 1 && path.includes("credit"),
+        idle: path.includes("pix") && i.label.toLowerCase().includes("pix") || path.includes("credit")
       })),
-    [state.steps]
+    [state.steps, path]
   )
 
   return (

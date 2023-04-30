@@ -3,7 +3,10 @@ import { Payment } from ".."
 
 const initialState = {
   selected: null as null | number,
-  steps: { current: 1, list: [{ id: 1, label: "Entrada no PIX" }] },
+  steps: {
+    current: 1,
+    list: [{ id: 1, label: "Entrada no PIX", idle: false }],
+  },
   installments: {
     selected: {} as Payment.Model["options"][0],
     options: [] as Payment.Model["options"],
@@ -47,10 +50,13 @@ const model = createSlice({
       state.steps = { ...state.steps, current: action.payload }
     },
 
-    addStep: (state, action: PayloadAction<{ id: number; label: string }>) => {
+    addStep: (
+      state,
+      action: PayloadAction<{ id: number; label: string; idle?: boolean }>
+    ) => {
       state.steps = {
         ...state.steps,
-        list: [...state.steps.list, action.payload],
+        list: [...state.steps.list, { ...action.payload, idle: false }],
       }
     },
 
@@ -61,6 +67,7 @@ const model = createSlice({
           {
             id: 1,
             label: "Entrada no PIX",
+            idle: false,
           },
         ],
       }

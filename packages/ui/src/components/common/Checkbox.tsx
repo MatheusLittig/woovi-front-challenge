@@ -17,6 +17,9 @@ const className = cva(
         true: ["bg-green-company-500 border-green-company-500"],
         false: ["bg-transparent border-dark-company-100"],
       },
+      idle: {
+        true: ["border-green-company-500"],
+      },
     },
 
     defaultVariants: {
@@ -32,6 +35,7 @@ type CheckboxProps = Omit<React.HTMLAttributes<HTMLSpanElement>, "children"> &
 const Checkbox = ({
   checked: _checked,
   size,
+  idle,
   onClick: _onClick,
   ...props
 }: CheckboxProps) => {
@@ -39,7 +43,7 @@ const Checkbox = ({
 
   return (
     <span
-      className={className({ checked: _checked ?? selected, size })}
+      className={className({ checked: _checked ?? selected, size, idle })}
       onClick={_onClick ? _onClick : () => setSelected(!selected)}
       {...props}
     >
