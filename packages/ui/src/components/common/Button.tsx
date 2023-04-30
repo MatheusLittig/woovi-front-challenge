@@ -30,7 +30,10 @@ const className = cva(
   }
 )
 
-type ButtonProps = React.HTMLAttributes<HTMLButtonElement> &
+type ButtonProps = React.DetailedHTMLProps<
+  React.ButtonHTMLAttributes<HTMLButtonElement>,
+  HTMLButtonElement
+> &
   VariantProps<typeof className> & { disabled?: boolean }
 
 const Button = ({ variant, size, full, ...props }: ButtonProps) => (

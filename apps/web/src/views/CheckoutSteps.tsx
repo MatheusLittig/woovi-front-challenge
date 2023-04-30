@@ -1,5 +1,6 @@
 "use client"
 
+import { format } from "@woovi/helpers"
 import { useStore } from "@woovi/stores/react/use-store"
 import { Display, Icon, Steps } from "@woovi/ui"
 import { useMemo } from "react"
@@ -21,8 +22,8 @@ const CheckoutSteps = () => {
     <section className="w-full flex flex-col gap-4">
       <Display
         when={
-          state.installments.length >= 1 &&
-          state.installments[0].value !== state.total
+          state.installments.options.length >= 1 &&
+          state.installments.selected.value !== state.total
         }
       >
         <Steps lined className="flex flex-col gap-4 w-full" data={listObj}>
@@ -31,13 +32,11 @@ const CheckoutSteps = () => {
               <p>{props.label}</p>
               <p>
                 <strong>
-                  {Intl.NumberFormat("pt-BT", {
-                    currency: "BRL",
-                    style: "currency",
-                  }).format(
+                  {format.currency(
+                    "pt-BR",
                     props.id === "2"
-                      ? state.total - state.installments[0].value
-                      : state.installments[0].value
+                      ? state.total - state.installments.selected.value
+                      : state.installments.selected.value
                   )}
                 </strong>
               </p>
@@ -54,11 +53,7 @@ const CheckoutSteps = () => {
       <span className="w-full flex items-center justify-between text-sm">
         CET {state.cet}%
         <p className="text-lg">
-          Total:{" "}
-          {Intl.NumberFormat("pt-BT", {
-            currency: "BRL",
-            style: "currency",
-          }).format(state.total)}
+          Total: {format.currency("pt-BR", state.installments.selected.total)}
         </p>
       </span>
 

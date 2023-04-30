@@ -22,28 +22,37 @@ const PaymentList = (props: { data: Payment.Model }) => {
 
       if (id === 1) {
         store.dispatch("removeStep")
-        store.dispatch("setInstaments", [
-          { amount: 1, total: props.data.total, value: props.data.total },
-        ])
+        store.dispatch("setInstaments", {
+          selected: {
+            amount: 1,
+            total: props.data.total,
+            value: props.data.total,
+          },
+        })
         store.dispatch("updateTotal", props.data.total)
       }
 
       if (id >= 2) {
         store.dispatch("removeStep")
         store.dispatch("addStep", { id: 2, label: "2ª no cartão" })
-        store.dispatch("setInstaments", [{ ...data }])
+        store.dispatch("setInstaments", {
+          selected: { ...data },
+        })
         store.dispatch("updateTotal", data.total)
       }
 
       store.dispatch("setSelected", id)
 
+      /** on first selection */
+      if (state.installments.options.length < 1) {
+        store.dispatch("setTerm", props.data.term)
+        store.dispatch("setInstaments", { options: props.data.options })
+      }
       return
     },
   }))
 
   const payment = props.data
-
-  console.log(state)
 
   return (
     <Fragment>

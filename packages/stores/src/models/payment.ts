@@ -4,7 +4,10 @@ import { Payment } from ".."
 const initialState = {
   selected: null as null | number,
   steps: { current: 1, list: [{ id: 1, label: "Entrada no PIX" }] },
-  installments: [] as Payment.Model["options"],
+  installments: {
+    selected: {} as Payment.Model["options"][0],
+    options: [] as Payment.Model["options"],
+  },
   term: "",
   cet: 0.05,
   total: 0,
@@ -20,15 +23,20 @@ const model = createSlice({
       state = { ...state, ...action.payload }
     },
 
+    setTerm: (state, action: PayloadAction<string>) => {
+      state.term = action.payload
+    },
+
     reset: state => {
-      state = initialState
+      state = { ...initialState }
+      return state
     },
 
     setInstaments: (
       state,
-      action: PayloadAction<(typeof initialState)["installments"]>
+      action: PayloadAction<Partial<(typeof initialState)["installments"]>>
     ) => {
-      state.installments = action.payload
+      state.installments = { ...state.installments, ...action.payload }
     },
 
     setSelected: (state, action: PayloadAction<number>) => {

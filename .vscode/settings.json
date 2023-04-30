@@ -25,6 +25,8 @@
     "stores": "context",
     "adapters": "cluster",
     "react": "React-components",
-    "schemas": "interface"
+    "schemas": "interface",
+    "formaters": "ci",
+
   }
 }
