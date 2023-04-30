@@ -22,7 +22,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <body
-        className={`${font.className} text-dark-company-600 px-3 py-2 m-[0_auto] h-screen flex flex-col items-center gap-8`}
+        className={`${font.className} text-dark-company-600 px-3 py-2 m-[0_auto] h-screen flex flex-col items-center gap-8 lg:max-w-md`}
       >
         <Image src="/logo.svg" alt="Woovi Pix" width={124} height={36} />
         {children}
