@@ -1,8 +1,8 @@
-# Woovi PIX - Frontend Challenge
-
 <p align="center">
-  <img src="./public/mockup.png" alt="Woovi PIX" style="display:block;margin:auto;width:50%;">
+<img src="./apps/web/public/logo.svg" alt="Woovi" width="100px"/>
 </p>
+
+## ℹ About
 
 This is a clone of Woovi, an app that allows you to manage your finances. This project is built as a monorepo using Turborepo and includes the following packages:
 
@@ -12,7 +12,7 @@ This is a clone of Woovi, an app that allows you to manage your finances. This p
 - `packages/presets`: Shared configuration files.
 - `packages/helpers`: Utility functions.
 
-## Tech Stack
+## 👩‍💻 Tech Stack
 
 - [Next.js](https://nextjs.org/): A React framework for server-side rendering and static site generation.
 - [React](https://reactjs.org/): A JavaScript library for building user interfaces.
@@ -20,18 +20,18 @@ This is a clone of Woovi, an app that allows you to manage your finances. This p
 - [Redux Toolkit](https://redux-toolkit.js.org/): A set of tools for efficient Redux development, including immutable state management, reducers, and middleware.
 - [TypeScript](https://www.typescriptlang.org/): A typed superset of JavaScript that compiles to plain JavaScript.
 
-## Getting Started
+## 🏃‍♂️ Getting Started
 
 To get started with this project, clone the repository to your local machine:
 
 ```bash
-git clone https://github.com/your-username/woovi-pix-clone.git
+git clone https://github.com/your-username/woovi-front-challenge.git
 ```
 
 Then, navigate to the project directory and install the dependencies:
 
 ```bash
-cd woovi-pix-clone
+cd woovi-front-challenge
 yarn install
 ```
 
@@ -43,6 +43,6 @@ yarn dev
 
 This will start the application on `http://localhost:3000`.
 
-## License
+## 📖 License
 
 This project is licensed under the MIT License. See the `LICENSE` file for more information.
